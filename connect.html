@@ -1,113 +1,132 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connect with Provider – Schedy</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #000;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-    }
-    .card {
-      max-width: 400px;
-      width: 100%;
-    }
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 24px;
-      background: #1a1a1a;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-    }
-    h1 { font-size: 24px; margin-bottom: 8px; }
-    p { color: #999; font-size: 15px; margin-bottom: 32px; line-height: 1.5; }
-    .btn {
-      display: inline-block;
-      background: #f5c518;
-      color: #000;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 14px 32px;
-      border-radius: 12px;
-      text-decoration: none;
-      margin-bottom: 16px;
-      width: 100%;
-    }
-    .btn-secondary {
-      background: transparent;
-      color: #f5c518;
-      border: 2px solid #f5c518;
-    }
-    .hint { color: #666; font-size: 13px; margin-top: 24px; }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <div class="logo">📅</div>
-    <h1>Connect on Schedy</h1>
-    <p>A provider wants to connect with you. Open the Schedy app to add them to your providers list.</p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Connect with Provider – Schedy</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background: #000;
+                color: #fff;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 24px;
+            }
+            .card {
+                max-width: 400px;
+                width: 100%;
+            }
+            .logo {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 24px;
+                background: #1a1a1a;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 36px;
+            }
+            h1 {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+            p {
+                color: #999;
+                font-size: 15px;
+                margin-bottom: 32px;
+                line-height: 1.5;
+            }
+            .btn {
+                display: inline-block;
+                background: #f5c518;
+                color: #000;
+                font-weight: 700;
+                font-size: 16px;
+                padding: 14px 32px;
+                border-radius: 12px;
+                text-decoration: none;
+                margin-bottom: 16px;
+                width: 100%;
+            }
+            .btn-secondary {
+                background: transparent;
+                color: #f5c518;
+                border: 2px solid #f5c518;
+            }
+            .hint {
+                color: #666;
+                font-size: 13px;
+                margin-top: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="logo">📅</div>
+            <h1>Connect on Schedy</h1>
+            <p>A provider wants to connect with you. Open the Schedy app to add them to your providers list.</p>
 
-    <a id="openApp" class="btn" href="#">Open in App</a>
-    <br />
-    <a id="storeLink" class="btn btn-secondary" href="#">Download Schedy</a>
+            <a id="openApp" class="btn" href="#">Open in App</a>
+            <br />
+            <a id="storeLink" class="btn btn-secondary" href="#">Download Schedy</a>
 
-    <p class="hint">The provider will be automatically added after you sign in.</p>
-  </div>
+            <p class="hint">The provider will be automatically added after you sign in.</p>
+        </div>
 
-  <script>
-    (function () {
-      // Extract the provider identifier from the query parameter: /connect?id=:id
-      var identifier = new URLSearchParams(window.location.search).get('id');
+        <script>
+            (function () {
+                // Extract the provider identifier from the query parameter: /connect?id=:id
+                var identifier = new URLSearchParams(window.location.search).get('id');
 
-      if (!identifier || !/^[A-Za-z0-9]{8}$/.test(identifier)) {
-        document.querySelector('h1').textContent = 'Invalid Link';
-        document.querySelector('p').textContent = 'This link does not contain a valid provider identifier.';
-        return;
-      }
+                console.log('Provider Identifier:', identifier);
+                if (!identifier || !/^[A-Za-z0-9]{8}$/.test(identifier)) {
+                    document.querySelector('h1').textContent = 'Invalid Link';
+                    document.querySelector('p').textContent = 'This link does not contain a valid provider identifier.';
+                    return;
+                }
 
-      // Build the deep link
-      var deepLink = 'schedy://connect/' + encodeURIComponent(identifier);
+                // Build the deep link
+                var deepLink = 'schedy://connect/' + encodeURIComponent(identifier);
 
-      // Detect platform
-      var ua = navigator.userAgent || navigator.vendor || '';
-      var isIOS = /iPad|iPhone|iPod/.test(ua);
-      var isAndroid = /android/i.test(ua);
+                // Detect platform
+                var ua = navigator.userAgent || navigator.vendor || '';
+                var isIOS = /iPad|iPhone|iPod/.test(ua);
+                var isAndroid = /android/i.test(ua);
 
-      // TODO: Replace with your actual App Store / Play Store URLs
-      var appStoreUrl = 'https://apps.apple.com/app/schedy/id__YOUR_APP_ID__';
-      var playStoreUrl = 'https://play.google.com/store/apps/details?id=com.schedy';
-      var storeUrl = isAndroid ? playStoreUrl : appStoreUrl;
+                // TODO: Replace with your actual App Store / Play Store URLs
+                var appStoreUrl = 'https://apps.apple.com/app/schedy/id__YOUR_APP_ID__';
+                var playStoreUrl = 'https://play.google.com/store/apps/details?id=com.schedy';
+                var storeUrl = isAndroid ? playStoreUrl : appStoreUrl;
 
-      document.getElementById('openApp').href = deepLink;
-      document.getElementById('storeLink').href = storeUrl;
+                document.getElementById('openApp').href = deepLink;
+                document.getElementById('storeLink').href = storeUrl;
 
-      // Try opening the app automatically
-      var didOpen = false;
-      window.addEventListener('blur', function () { didOpen = true; });
+                // Try opening the app automatically
+                var didOpen = false;
+                window.addEventListener('blur', function () {
+                    didOpen = true;
+                });
 
-      // Attempt to open via custom scheme
-      window.location.href = deepLink;
+                // Attempt to open via custom scheme
+                window.location.href = deepLink;
 
-      // If the app didn't open after a short delay, redirect to store
-      setTimeout(function () {
-        if (!didOpen && !document.hidden) {
-          window.location.href = storeUrl;
-        }
-      }, 1500);
-    })();
-  </script>
-</body>
+                // If the app didn't open after a short delay, redirect to store
+                setTimeout(function () {
+                    if (!didOpen && !document.hidden) {
+                        window.location.href = storeUrl;
+                    }
+                }, 1500);
+            })();
+        </script>
+    </body>
 </html>
