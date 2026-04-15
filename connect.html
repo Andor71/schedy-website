@@ -69,11 +69,10 @@
 
   <script>
     (function () {
-      // Extract the provider identifier from the URL path: /connect/:id
-      var pathParts = window.location.pathname.split('/').filter(Boolean);
-      var identifier = (pathParts.length >= 2 && pathParts[0] === 'connect') ? pathParts[1] : null;
+      // Extract the provider identifier from the query parameter: /connect?id=:id
+      var identifier = new URLSearchParams(window.location.search).get('id');
 
-      if (!identifier || !/^[A-Za-z0-9]{1,8}$/.test(identifier)) {
+      if (!identifier || !/^[A-Za-z0-9]{8}$/.test(identifier)) {
         document.querySelector('h1').textContent = 'Invalid Link';
         document.querySelector('p').textContent = 'This link does not contain a valid provider identifier.';
         return;
