@@ -1025,3 +1025,8 @@ header .broad-nav .navbar .nav-link.active {
     background-color: #151515;
     color: var(--text-color);
 }
+
+.social {
+    font-size: 40px;
+    color: var(--primary-color);
+}
