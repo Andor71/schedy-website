@@ -1,72 +1,743 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <title>Shedy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Meta Tags -->
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+        <!-- Author -->
+        <meta name="author" content="Schedy" />
+        <!-- description -->
+        <meta
+            name="description"
+            content="Schedy Legal — Terms of Service and Privacy Policy for the Schedy scheduling platform."
+        />
+        <!-- Page Title -->
+        <title>Schedy — Legal</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+        />
+        <!-- Favicon -->
+        <link rel="icon" href="images/logo.png" />
+        <!--css links-->
+        <link rel="stylesheet" href="vendor/css/bundle.min.css" />
+        <link rel="stylesheet" href="vendor/css/wow.css" />
+        <link rel="stylesheet" href="vapp-landing/css/line-awesome.min.css" />
+        <link rel="stylesheet" href="vapp-landing/css/style.css" />
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 40px;
-                max-width: 800px;
-                line-height: 1.6;
+            /* ---- Legal page specific styles ---- */
+            .legal-hero {
+                padding: 100px 0 60px;
+                background: linear-gradient(135deg, #171a1f 0%, #1e2129 100%);
+                border-bottom: 1px solid rgba(245, 197, 24, 0.15);
             }
-            h1,
-            h2 {
-                color: #222;
+            .legal-hero .sub-heading {
+                color: var(--primary-color);
+                letter-spacing: 2px;
+                font-size: 0.85rem;
+                text-transform: uppercase;
             }
-            .section {
-                margin-bottom: 40px;
+            .legal-hero h1 {
+                font-size: 2.8rem;
+                font-weight: 700;
+                color: var(--text-color);
+            }
+            .legal-hero p {
+                color: rgba(245, 247, 250, 0.6);
+                font-size: 1rem;
+            }
+            /* Tab nav */
+            .legal-tabs {
+                background-color: #1e2129;
+                border-bottom: 1px solid rgba(245, 197, 24, 0.15);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            .legal-tabs .nav-link {
+                color: rgba(245, 247, 250, 0.6);
+                padding: 18px 30px;
+                font-weight: 600;
+                font-size: 0.95rem;
+                border: none;
+                border-bottom: 3px solid transparent;
+                border-radius: 0;
+                transition: all 0.3s ease;
+                letter-spacing: 0.5px;
+            }
+            .legal-tabs .nav-link:hover {
+                color: var(--primary-color);
+                background: transparent;
+            }
+            .legal-tabs .nav-link.active {
+                color: var(--primary-color);
+                background: transparent;
+                border-bottom: 3px solid var(--primary-color);
+            }
+            /* Content */
+            .legal-content {
+                padding: 60px 0 80px;
+            }
+            .legal-section {
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(245, 197, 24, 0.08);
+                border-radius: 12px;
+                padding: 36px 40px;
+                margin-bottom: 24px;
+                transition: border-color 0.3s ease;
+            }
+            .legal-section:hover {
+                border-color: rgba(245, 197, 24, 0.2);
+            }
+            .legal-section h3 {
+                color: var(--primary-color);
+                font-size: 1.1rem;
+                font-weight: 700;
+                margin-bottom: 16px;
+                letter-spacing: 0.5px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .legal-section h3 i {
+                font-size: 1.3rem;
+            }
+            .legal-section p,
+            .legal-section li {
+                color: rgba(245, 247, 250, 0.75);
+                line-height: 1.8;
+                font-size: 0.95rem;
+                margin-bottom: 10px;
+            }
+            .legal-section ul {
+                padding-left: 20px;
+            }
+            .legal-section ul li::marker {
+                color: var(--primary-color);
+            }
+            .legal-section p:last-child {
+                margin-bottom: 0;
+            }
+            .effective-date {
+                color: rgba(245, 247, 250, 0.4);
+                font-size: 0.85rem;
+                margin-top: 4px;
+            }
+            .legal-badge {
+                display: inline-block;
+                background: rgba(245, 197, 24, 0.12);
+                color: var(--primary-color);
+                padding: 4px 12px;
+                border-radius: 20px;
+                font-size: 0.78rem;
+                font-weight: 600;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                margin-bottom: 16px;
             }
         </style>
     </head>
     <body>
-        <h1>Schedy</h1>
-        <p>This site is still under development.</p>
-        <p><strong>Booking platform for service providers and clients.</strong></p>
+        <!--loader sec start-->
+        <div class="loader">
+            <div class="box">
+                <div class="loader-07"></div>
+            </div>
+        </div>
+        <!--loader sec end-->
 
-        <div class="section">
-            <h2>About</h2>
-            <p>
-                Schedy is a platform that allows service providers such as barbers, stylists, and other professionals to
-                manage their appointments and accept bookings from clients.
-            </p>
+        <!--header sec start-->
+        <header class="head-sec">
+            <div class="container">
+                <div class="top-navigation">
+                    <nav class="navbar navbar-expand-lg navbar-own-dark nav-up">
+                        <a class="navbar-brand" href="index.html"
+                            ><img src="images/logo_transparent.png" alt="logo" width="75"
+                        /></a>
+
+                        <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
+                            <ul class="navbar-nav horizontal-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#home">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#services-sec">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#app-clips">Screenshots</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#faq">FAQ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html#get-app-sec">Download</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="navigation-toggle ml-auto d-block d-lg-none">
+                            <ul class="slider-social toggle-btn" id="toggle-btn">
+                                <li class="animated-wrap">
+                                    <a class="animated-element" href="javascript:void(0);">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="broad">
+                    <div class="close-nav">
+                        <i class="las la-times"></i>
+                    </div>
+                    <nav class="navbar navbar-own-dark navbar-light">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#services-sec">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#app-clips">Screenshots</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#faq">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#get-app-sec">Download</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!--header sec end-->
+
+        <!-- Legal Hero -->
+        <section class="legal-hero text-center">
+            <div class="container">
+                <p class="sub-heading">- Legal -</p>
+                <h1>Terms &amp; Privacy</h1>
+                <p class="mt-3 mx-auto" style="max-width: 540px;">
+                    Please read these documents carefully. By using Schedy, you agree to the terms outlined below.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tab Navigation -->
+        <div class="legal-tabs">
+            <div class="container">
+                <ul class="nav" id="legalTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button
+                            class="nav-link active"
+                            id="terms-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#terms"
+                            type="button"
+                            role="tab"
+                            aria-controls="terms"
+                            aria-selected="true"
+                        >
+                            <i class="las la-file-contract me-2"></i>Terms of Service
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button
+                            class="nav-link"
+                            id="privacy-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#privacy"
+                            type="button"
+                            role="tab"
+                            aria-controls="privacy"
+                            aria-selected="false"
+                        >
+                            <i class="las la-shield-alt me-2"></i>Privacy Policy
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="section">
-            <h2>How it works</h2>
-            <ul>
-                <li>Providers create a profile and list their services</li>
-                <li>Clients browse and book available time slots</li>
-                <li>Payments are processed securely through Stripe</li>
-            </ul>
-        </div>
+        <!-- Tab Content -->
+        <section class="legal-content">
+            <div class="container">
+                <div class="tab-content" id="legalTabContent">
 
-        <div class="section">
-            <h2>Contact</h2>
-            <p>Email: pal.andor71@gmail.com</p>
-        </div>
+                    <!-- ===================== TERMS OF SERVICE ===================== -->
+                    <div class="tab-pane fade show active" id="terms" role="tabpanel" aria-labelledby="terms-tab">
+                        <div class="row">
+                            <div class="col-12 col-lg-10 offset-lg-1">
 
-        <div class="section">
-            <h2>Privacy Policy</h2>
-            <p>
-                We collect basic user information such as name, email address, and booking details to provide our
-                services.
-            </p>
-            <p>
-                Payment processing is handled securely by third-party providers. We do not store full payment details.
-            </p>
-            <p>Your data is used only for providing and improving our services.</p>
-        </div>
+                                <div class="mb-4">
+                                    <span class="legal-badge">Terms of Service</span>
+                                    <p class="effective-date">Effective date: May 4, 2026</p>
+                                </div>
 
-        <div class="section">
-            <h2>Terms of Service</h2>
-            <p>By using Schedy, you agree to use the platform only for lawful purposes.</p>
-            <p>
-                Providers are responsible for the services they offer. Clients are responsible for attending booked
-                appointments.
-            </p>
-            <p>Cancellation and refund policies may vary depending on the provider.</p>
+                                <div class="legal-section">
+                                    <h3><i class="las la-info-circle"></i> 1. Acceptance of Terms</h3>
+                                    <p>
+                                        By downloading, installing, or using the Schedy mobile application or any related services
+                                        (collectively, the "Service"), you agree to be bound by these Terms of Service ("Terms").
+                                        If you do not agree to these Terms, do not access or use the Service.
+                                    </p>
+                                    <p>
+                                        These Terms apply to all visitors, users, and others who access or use the Service,
+                                        including both service providers ("Providers") and clients ("Clients").
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-user-circle"></i> 2. Eligibility</h3>
+                                    <p>
+                                        You must be at least 18 years of age to create an account and use the Service. By agreeing
+                                        to these Terms, you represent and warrant that you meet this requirement.
+                                    </p>
+                                    <p>
+                                        If you are using the Service on behalf of a business, you represent that you have authority
+                                        to bind that business to these Terms.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-id-card"></i> 3. Account Registration</h3>
+                                    <p>
+                                        To access certain features of the Service, you must register for an account. You agree to
+                                        provide accurate, current, and complete information during registration and to keep your
+                                        account information up to date.
+                                    </p>
+                                    <p>
+                                        You are responsible for maintaining the confidentiality of your account credentials and for
+                                        all activity that occurs under your account. You must notify us immediately at
+                                        <a href="mailto:pal.andor71@gmail.com" style="color: var(--primary-color);">pal.andor71@gmail.com</a>
+                                        of any unauthorized use of your account.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-store"></i> 4. Provider Responsibilities</h3>
+                                    <p>
+                                        As a Provider, you agree to:
+                                    </p>
+                                    <ul>
+                                        <li>Provide accurate descriptions of your services, pricing, and availability.</li>
+                                        <li>Honor confirmed bookings unless a cancellation is necessary, in which case you must notify the Client promptly.</li>
+                                        <li>Comply with all applicable local, national, and international laws and regulations related to your services.</li>
+                                        <li>Treat all Clients professionally and with respect.</li>
+                                        <li>Keep your profile, services, and schedule information up to date.</li>
+                                    </ul>
+                                    <p>
+                                        Schedy acts solely as a scheduling platform. We are not responsible for the quality,
+                                        safety, or legality of any services provided by Providers.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-user-friends"></i> 5. Client Responsibilities</h3>
+                                    <p>As a Client, you agree to:</p>
+                                    <ul>
+                                        <li>Attend booked appointments on time, or cancel within a reasonable period before the scheduled time.</li>
+                                        <li>Provide accurate personal information when making a booking.</li>
+                                        <li>Respect the Provider's cancellation and rescheduling policies.</li>
+                                        <li>Use the platform only for legitimate booking purposes.</li>
+                                    </ul>
+                                    <p>
+                                        Repeated no-shows or misuse of the booking system may result in suspension or termination
+                                        of your account.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-credit-card"></i> 6. Payments &amp; Subscriptions</h3>
+                                    <p>
+                                        The Schedy app is free to download and use for Clients. Providers must purchase a
+                                        subscription to access all platform features. Subscription fees are billed in advance
+                                        on a recurring basis (monthly or annually, as selected).
+                                    </p>
+                                    <p>
+                                        Payment processing is handled securely by Stripe. By providing payment information, you
+                                        authorize Schedy and its payment processor to charge the applicable fees. We do not
+                                        store full card or banking details on our servers.
+                                    </p>
+                                    <p>
+                                        All fees are non-refundable except as required by applicable law or as stated in our
+                                        Refund Policy. Schedy reserves the right to change subscription pricing with reasonable
+                                        notice.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-ban"></i> 7. Prohibited Conduct</h3>
+                                    <p>You agree not to:</p>
+                                    <ul>
+                                        <li>Use the Service for any unlawful purpose or in violation of any regulations.</li>
+                                        <li>Harass, abuse, or harm another user.</li>
+                                        <li>Post false or misleading information about yourself or your services.</li>
+                                        <li>Attempt to gain unauthorized access to any part of the Service or its related systems.</li>
+                                        <li>Use automated tools, bots, or scrapers to access or collect data from the Service.</li>
+                                        <li>Transmit viruses, malware, or any other malicious code.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-copyright"></i> 8. Intellectual Property</h3>
+                                    <p>
+                                        All content, features, and functionality of the Service — including but not limited to
+                                        text, graphics, logos, icons, images, and software — are the exclusive property of
+                                        Schedy or its licensors and are protected by intellectual property laws.
+                                    </p>
+                                    <p>
+                                        You may not reproduce, distribute, modify, create derivative works of, or publicly display
+                                        any portion of the Service without prior written consent from Schedy.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-exclamation-triangle"></i> 9. Disclaimers &amp; Limitation of Liability</h3>
+                                    <p>
+                                        The Service is provided on an "as is" and "as available" basis without warranties of any
+                                        kind, either express or implied. Schedy does not warrant that the Service will be
+                                        uninterrupted, error-free, or free of harmful components.
+                                    </p>
+                                    <p>
+                                        To the maximum extent permitted by applicable law, Schedy shall not be liable for any
+                                        indirect, incidental, special, consequential, or punitive damages, including loss of
+                                        profits, data, or goodwill, arising out of or in connection with your use of the Service.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-times-circle"></i> 10. Termination</h3>
+                                    <p>
+                                        We reserve the right to suspend or terminate your account and access to the Service at
+                                        our sole discretion, without notice, for conduct that we believe violates these Terms or
+                                        is harmful to other users, us, or third parties.
+                                    </p>
+                                    <p>
+                                        You may terminate your account at any time by contacting us at
+                                        <a href="mailto:pal.andor71@gmail.com" style="color: var(--primary-color);">pal.andor71@gmail.com</a>.
+                                        Termination does not entitle you to a refund of any prepaid subscription fees.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-balance-scale"></i> 11. Governing Law</h3>
+                                    <p>
+                                        These Terms shall be governed by and construed in accordance with applicable law.
+                                        Any disputes arising under these Terms shall be subject to the exclusive jurisdiction
+                                        of the competent courts.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-sync-alt"></i> 12. Changes to These Terms</h3>
+                                    <p>
+                                        Schedy reserves the right to modify these Terms at any time. We will notify you of
+                                        material changes by updating the effective date at the top of this page and, where
+                                        appropriate, by sending a notification through the app.
+                                    </p>
+                                    <p>
+                                        Your continued use of the Service after any changes constitutes your acceptance of the
+                                        revised Terms.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-envelope"></i> 13. Contact Us</h3>
+                                    <p>
+                                        If you have questions about these Terms of Service, please contact us at:
+                                    </p>
+                                    <p>
+                                        <strong style="color: var(--text-color);">Schedy</strong><br />
+                                        Email: <a href="mailto:pal.andor71@gmail.com" style="color: var(--primary-color);">pal.andor71@gmail.com</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END TERMS OF SERVICE -->
+
+                    <!-- ===================== PRIVACY POLICY ===================== -->
+                    <div class="tab-pane fade" id="privacy" role="tabpanel" aria-labelledby="privacy-tab">
+                        <div class="row">
+                            <div class="col-12 col-lg-10 offset-lg-1">
+
+                                <div class="mb-4">
+                                    <span class="legal-badge">Privacy Policy</span>
+                                    <p class="effective-date">Effective date: May 4, 2026</p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-info-circle"></i> 1. Introduction</h3>
+                                    <p>
+                                        At Schedy, your privacy matters to us. This Privacy Policy explains how we collect,
+                                        use, disclose, and safeguard your information when you use the Schedy mobile application
+                                        and related services ("Service").
+                                    </p>
+                                    <p>
+                                        By using the Service, you consent to the data practices described in this policy. If you
+                                        do not agree, please do not use the Service.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-database"></i> 2. Information We Collect</h3>
+                                    <p>We may collect the following categories of information:</p>
+                                    <ul>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Account Information:</strong>
+                                            Name, email address, phone number, and profile photo when you register.
+                                        </li>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Provider Information:</strong>
+                                            Business name, service descriptions, pricing, availability schedule, and QR code data.
+                                        </li>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Booking Data:</strong>
+                                            Appointment details, selected services, and booking history.
+                                        </li>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Payment Information:</strong>
+                                            Transaction records and payment status. Full card details are processed and stored by
+                                            Stripe — we do not store your raw payment credentials.
+                                        </li>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Device &amp; Usage Data:</strong>
+                                            IP address, device type, operating system, app version, and usage analytics to help
+                                            us improve the Service.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-cogs"></i> 3. How We Use Your Information</h3>
+                                    <p>We use the information we collect to:</p>
+                                    <ul>
+                                        <li>Create and manage your account.</li>
+                                        <li>Facilitate and confirm appointment bookings between Clients and Providers.</li>
+                                        <li>Process payments and send receipts or invoices.</li>
+                                        <li>Send you transactional notifications (booking confirmations, reminders, cancellations).</li>
+                                        <li>Improve, personalize, and develop the Service.</li>
+                                        <li>Respond to your support requests and communicate with you.</li>
+                                        <li>Comply with legal obligations and enforce our Terms of Service.</li>
+                                        <li>Detect and prevent fraudulent or unauthorized activity.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-share-alt"></i> 4. How We Share Your Information</h3>
+                                    <p>We do not sell your personal information. We may share it in the following limited circumstances:</p>
+                                    <ul>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Between Users:</strong>
+                                            Clients see a Provider's public profile and availability. Providers see the Client's
+                                            name and contact details for booked appointments.
+                                        </li>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Service Providers:</strong>
+                                            We work with trusted third parties (such as Stripe for payments and cloud infrastructure
+                                            providers) who assist us in operating the Service. These parties are contractually
+                                            required to protect your data.
+                                        </li>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Legal Requirements:</strong>
+                                            We may disclose your information if required by law, court order, or government request,
+                                            or to protect the rights, property, or safety of Schedy, our users, or the public.
+                                        </li>
+                                        <li>
+                                            <strong style="color: var(--text-color);">Business Transfers:</strong>
+                                            In the event of a merger, acquisition, or sale of assets, your information may be
+                                            transferred. We will notify you before your data is transferred and becomes subject to
+                                            a different privacy policy.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-cookie-bite"></i> 5. Cookies &amp; Tracking Technologies</h3>
+                                    <p>
+                                        We may use cookies and similar tracking technologies on our website to enhance your
+                                        experience, analyze usage patterns, and improve the Service. You can control cookie
+                                        preferences through your browser settings.
+                                    </p>
+                                    <p>
+                                        The Schedy mobile app may collect device identifiers and usage analytics to help us
+                                        understand how users interact with the app.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-lock"></i> 6. Data Security</h3>
+                                    <p>
+                                        We take the security of your personal information seriously. We implement
+                                        industry-standard technical and organizational measures — including encryption in transit
+                                        (TLS) and at rest, access controls, and regular security reviews — to protect your data
+                                        from unauthorized access, alteration, disclosure, or destruction.
+                                    </p>
+                                    <p>
+                                        However, no method of transmission over the internet or electronic storage is 100% secure.
+                                        While we strive to protect your data, we cannot guarantee absolute security.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-clock"></i> 7. Data Retention</h3>
+                                    <p>
+                                        We retain your personal information for as long as your account is active or as needed to
+                                        provide the Service, comply with legal obligations, resolve disputes, and enforce our
+                                        agreements.
+                                    </p>
+                                    <p>
+                                        When you delete your account, we will delete or anonymize your personal data within a
+                                        reasonable time frame, unless retention is required by law.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-user-shield"></i> 8. Your Rights</h3>
+                                    <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+                                    <ul>
+                                        <li><strong style="color: var(--text-color);">Access:</strong> Request a copy of the personal data we hold about you.</li>
+                                        <li><strong style="color: var(--text-color);">Correction:</strong> Ask us to correct inaccurate or incomplete data.</li>
+                                        <li><strong style="color: var(--text-color);">Deletion:</strong> Request deletion of your personal data ("right to be forgotten").</li>
+                                        <li><strong style="color: var(--text-color);">Portability:</strong> Receive your data in a structured, machine-readable format.</li>
+                                        <li><strong style="color: var(--text-color);">Objection:</strong> Object to certain types of processing, including direct marketing.</li>
+                                        <li><strong style="color: var(--text-color);">Withdrawal of Consent:</strong> Where processing is based on consent, withdraw it at any time.</li>
+                                    </ul>
+                                    <p>
+                                        To exercise any of these rights, please contact us at
+                                        <a href="mailto:pal.andor71@gmail.com" style="color: var(--primary-color);">pal.andor71@gmail.com</a>.
+                                        We will respond within the timeframe required by applicable law.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-child"></i> 9. Children's Privacy</h3>
+                                    <p>
+                                        The Service is not directed to individuals under the age of 13. We do not knowingly collect
+                                        personal information from children. If we become aware that a child under 13 has provided
+                                        us with personal data, we will take steps to delete that information promptly.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-globe"></i> 10. International Data Transfers</h3>
+                                    <p>
+                                        Your information may be transferred to and processed in countries other than your own.
+                                        These countries may have different data protection laws. Where required, we ensure
+                                        appropriate safeguards are in place to protect your data in accordance with this policy.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-sync-alt"></i> 11. Changes to This Policy</h3>
+                                    <p>
+                                        We may update this Privacy Policy from time to time. We will notify you of material
+                                        changes by updating the effective date and, where appropriate, sending a notification
+                                        through the app or by email.
+                                    </p>
+                                    <p>
+                                        Your continued use of the Service after any changes constitutes your acceptance of the
+                                        updated Privacy Policy.
+                                    </p>
+                                </div>
+
+                                <div class="legal-section">
+                                    <h3><i class="las la-envelope"></i> 12. Contact Us</h3>
+                                    <p>
+                                        If you have questions, concerns, or requests regarding this Privacy Policy, please contact us:
+                                    </p>
+                                    <p>
+                                        <strong style="color: var(--text-color);">Schedy</strong><br />
+                                        Email: <a href="mailto:pal.andor71@gmail.com" style="color: var(--primary-color);">pal.andor71@gmail.com</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PRIVACY POLICY -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="container">
+            <footer class="row row-cols-5 py-5 my-5 border-top">
+                <div class="col">
+                    <img src="images/logo_transparent.png" alt="logo" width="100" />
+                </div>
+
+                <div class="col">
+                    <h5>Social</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="https://www.instagram.com/schedy.71/" class="nav-link p-0 social"
+                                ><i class="lab la-instagram"></i
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h5>Sections</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="index.html#home" class="nav-link p-0 text-muted">Home</a></li>
+                        <li class="nav-item mb-2">
+                            <a href="index.html#services-sec" class="nav-link p-0 text-muted">Features</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="index.html#app-clips" class="nav-link p-0 text-muted">Screenshots</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="index.html#get-app-sec" class="nav-link p-0 text-muted">Download</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h5>Legal</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="legal.html#privacy" class="nav-link p-0 text-muted">Privacy Policy</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="legal.html#terms" class="nav-link p-0 text-muted">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </div>
+        <!--footer sec end-->
+
+        <script src="vendor/js/bundle.min.js"></script>
+        <script src="vendor/js/wow.min.js"></script>
+        <script src="vapp-landing/js/script.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            // Activate tab from URL hash on page load
+            (function () {
+                var hash = window.location.hash;
+                if (hash === '#privacy') {
+                    var tab = document.getElementById('privacy-tab');
+                    if (tab) {
+                        var bsTab = new bootstrap.Tab(tab);
+                        bsTab.show();
+                    }
+                }
+            })();
+        </script>
     </body>
 </html>
