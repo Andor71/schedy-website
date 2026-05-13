@@ -136,14 +136,10 @@
         <script>
             const APP_STORE_URL = 'https://apps.apple.com/ro/app/schedy/id6760036730';
 
-            // Kinyeri az identifiert az URL útvonalból: /connect/ABC123
+            // Kinyeri az identifiert
             function getIdentifierFromPath() {
                 const parts = window.location.pathname.split('/').filter(Boolean);
-                // /connect/ABC123 → ['connect', 'ABC123']
-                if (parts.length >= 2 && parts[0] === 'connect') {
-                    return parts[1];
-                }
-                // Fallback: query param ?id=ABC123 (pl. /connect.html?id=ABC123)
+                if (parts.length >= 2 && parts[0] === 'connect') return parts[1];
                 return new URLSearchParams(window.location.search).get('id');
             }
 
@@ -158,42 +154,74 @@
                 document.getElementById('provider-id').textContent = 'Invalid link';
                 document.getElementById('btn-download').style.display = 'none';
                 document.getElementById('btn-open').style.display = 'none';
-                document.getElementById('divider').style.display = 'none';
             }
 
-            // "Open in Schedy" gomb: megpróbálja megnyitni az appot
+            // Clipboard-ra másolja az identifiert (best-effort, iOS Safari user gesture nélkül
+            // tilthatja — ezért a gombokon is megismételjük, de próbáljuk meg azonnal is)
+            function copyToClipboard() {
+                if (!deepLink) return;
+                try {
+                    navigator.clipboard.writeText(deepLink).catch(function () {});
+                } catch (e) {}
+            }
+
+            // App Store-ra irányít (timeout-ot lehet cancelálni ha az app megnyílt)
+            var appStoreTimer = null;
+
+            function redirectToAppStore() {
+                copyToClipboard();
+                window.location.href = APP_STORE_URL;
+            }
+
+            // AUTO FLOW (oldal betöltésekor fut le):
+            // 1. Azonnal clipboard-ra másolja az identifiert
+            // 2. 400ms után megpróbálja megnyitni az appot custom scheme-mel
+            // 3. Ha az app megnyílt, a lap háttérbe kerül (visibilitychange/pagehide)
+            //    → töröljük az App Store timert
+            // 4. Ha 2400ms után még mindig itt vagyunk → App Store
+            if (deepLink) {
+                copyToClipboard();
+
+                setTimeout(function () {
+                    window.location.href = deepLink;
+
+                    // Ha 2000ms-on belül az oldal nem lesz rejtett, App Store
+                    appStoreTimer = setTimeout(redirectToAppStore, 2000);
+                }, 400);
+
+                // Ha az app megnyílt, az oldal háttérbe kerül → cancel App Store redirect
+                document.addEventListener('visibilitychange', function () {
+                    if (document.hidden && appStoreTimer) {
+                        clearTimeout(appStoreTimer);
+                        appStoreTimer = null;
+                    }
+                });
+                window.addEventListener('pagehide', function () {
+                    if (appStoreTimer) {
+                        clearTimeout(appStoreTimer);
+                        appStoreTimer = null;
+                    }
+                });
+            }
+
+            // FALLBACK GOMBOK (ha az auto flow nem működött)
+
+            // "Open in Schedy" — kézzel próbálja megnyitni az appot
             function openInApp(e) {
                 if (!deepLink) return;
                 e.preventDefault();
+                copyToClipboard();
                 window.location.href = deepLink;
-                // Ha 2mp után még itt van, az app nincs telepítve
                 setTimeout(function () {
                     document.getElementById('status').textContent = 'App not found. Please download Schedy first.';
                 }, 2000);
             }
 
-            // "Download & Auto-Connect" gomb:
-            // 1. Clipboard-ra másolja a deep link-et (az app indításkor kiolvas ebből)
-            // 2. Megnyitja az App Store oldalt
-            async function downloadAndConnect() {
+            // "Download & Auto-Connect" — clipboard + App Store
+            function downloadAndConnect() {
                 if (!deepLink) return;
-
-                try {
-                    await navigator.clipboard.writeText(deepLink);
-                } catch (err) {
-                    // Clipboard API nem elérhető minden böngészőben — silent fallback
-                    console.warn('Clipboard write failed', err);
-                }
-
+                copyToClipboard();
                 window.location.href = APP_STORE_URL;
-            }
-
-            // Ha Universal Link nem működött és az oldal betölt:
-            // automatikusan megpróbálja megnyitni az appot 800ms után
-            if (deepLink) {
-                setTimeout(function () {
-                    window.location.href = deepLink;
-                }, 800);
             }
         </script>
     </body>
