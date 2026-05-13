@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Connect on Schedy</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                background: #0a0a0a;
+                color: #ffffff;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                padding: 32px 20px;
+            }
+            .card {
+                background: #1a1a1a;
+                border-radius: 20px;
+                padding: 40px 32px;
+                max-width: 400px;
+                width: 100%;
+                text-align: center;
+                border: 1px solid #2a2a2a;
+            }
+            .logo {
+                font-size: 28px;
+                font-weight: 700;
+                color: #f0a500;
+                margin-bottom: 8px;
+            }
+            .subtitle {
+                color: #888;
+                font-size: 14px;
+                margin-bottom: 32px;
+            }
+            .provider-id {
+                background: #252525;
+                border: 1px solid #f0a500;
+                border-radius: 12px;
+                padding: 14px 20px;
+                font-size: 20px;
+                font-weight: 600;
+                color: #f0a500;
+                letter-spacing: 2px;
+                margin-bottom: 16px;
+            }
+            .provider-label {
+                color: #888;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 32px;
+            }
+            .description {
+                color: #aaa;
+                font-size: 15px;
+                line-height: 1.5;
+                margin-bottom: 32px;
+            }
+            .btn-download {
+                display: block;
+                width: 100%;
+                background: #f0a500;
+                color: #000;
+                font-size: 16px;
+                font-weight: 700;
+                padding: 16px;
+                border-radius: 12px;
+                border: none;
+                cursor: pointer;
+                text-decoration: none;
+                margin-bottom: 12px;
+                transition: background 0.2s;
+            }
+            .btn-download:hover {
+                background: #d4920a;
+            }
+            .btn-open {
+                display: block;
+                width: 100%;
+                background: transparent;
+                color: #f0a500;
+                font-size: 16px;
+                font-weight: 600;
+                padding: 14px;
+                border-radius: 12px;
+                border: 2px solid #f0a500;
+                cursor: pointer;
+                text-decoration: none;
+                transition: background 0.2s;
+            }
+            .btn-open:hover {
+                background: rgba(240, 165, 0, 0.08);
+            }
+            .status {
+                color: #666;
+                font-size: 13px;
+                margin-top: 20px;
+                min-height: 20px;
+            }
+            .divider {
+                color: #444;
+                font-size: 13px;
+                margin: 12px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="logo">Schedy</div>
+            <div class="subtitle">Appointment booking made easy</div>
+
+            <div class="provider-id" id="provider-id">...</div>
+            <div class="provider-label">Provider ID</div>
+
+            <p class="description">Open Schedy to connect with this provider and book appointments instantly.</p>
+
+            <button class="btn-download" id="btn-download" onclick="downloadAndConnect()">
+                Download &amp; Auto&#8209;Connect
+            </button>
+
+            <div class="divider">or</div>
+
+            <a class="btn-open" id="btn-open" href="#" onclick="openInApp(event)"> Open in Schedy </a>
+
+            <p class="status" id="status"></p>
+        </div>
+
+        <script>
+            const APP_STORE_URL = 'https://apps.apple.com/ro/app/schedy/id6760036730';
+
+            // Kinyeri az identifiert az URL útvonalból: /connect/ABC123
+            function getIdentifierFromPath() {
+                const parts = window.location.pathname.split('/').filter(Boolean);
+                // /connect/ABC123 → ['connect', 'ABC123']
+                if (parts.length >= 2 && parts[0] === 'connect') {
+                    return parts[1];
+                }
+                // Fallback: query param ?id=ABC123 (pl. /connect.html?id=ABC123)
+                return new URLSearchParams(window.location.search).get('id');
+            }
+
+            const identifier = getIdentifierFromPath();
+            const deepLink = identifier ? 'schedy://connect/' + identifier : null;
+
+            // Megjeleníti az identifiert az oldalon
+            if (identifier) {
+                document.getElementById('provider-id').textContent = identifier;
+                document.getElementById('btn-open').href = deepLink;
+            } else {
+                document.getElementById('provider-id').textContent = 'Invalid link';
+                document.getElementById('btn-download').style.display = 'none';
+                document.getElementById('btn-open').style.display = 'none';
+                document.getElementById('divider').style.display = 'none';
+            }
+
+            // "Open in Schedy" gomb: megpróbálja megnyitni az appot
+            function openInApp(e) {
+                if (!deepLink) return;
+                e.preventDefault();
+                window.location.href = deepLink;
+                // Ha 2mp után még itt van, az app nincs telepítve
+                setTimeout(function () {
+                    document.getElementById('status').textContent = 'App not found. Please download Schedy first.';
+                }, 2000);
+            }
+
+            // "Download & Auto-Connect" gomb:
+            // 1. Clipboard-ra másolja a deep link-et (az app indításkor kiolvas ebből)
+            // 2. Megnyitja az App Store oldalt
+            async function downloadAndConnect() {
+                if (!deepLink) return;
+
+                try {
+                    await navigator.clipboard.writeText(deepLink);
+                } catch (err) {
+                    // Clipboard API nem elérhető minden böngészőben — silent fallback
+                    console.warn('Clipboard write failed', err);
+                }
+
+                window.location.href = APP_STORE_URL;
+            }
+
+            // Ha Universal Link nem működött és az oldal betölt:
+            // automatikusan megpróbálja megnyitni az appot 800ms után
+            if (deepLink) {
+                setTimeout(function () {
+                    window.location.href = deepLink;
+                }, 800);
+            }
+        </script>
+    </body>
+</html>
